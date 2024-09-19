@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/POM/4.0.0">
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ashish</groupId>
@@ -15,8 +14,20 @@
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.surefire.version>3.0.0-M5</maven.surefire.version> <!-- Ensure compatibility -->
+        <maven.surefire.version>3.0.0-M5</maven.surefire.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- Spring Boot Starter Web -->
@@ -62,10 +73,10 @@
 
         <!-- MongoDB Driver -->
         <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-sync</artifactId>
-            <version>4.7.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -102,5 +113,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
